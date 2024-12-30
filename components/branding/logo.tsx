@@ -1,10 +1,15 @@
-import Image from 'next/image'
-import React from 'react'
+import Image from "next/image"
 
 export const Logo = () => {
+
     return (
-        <div className='dark:display-none'>
-            <Image src="/logo-dark.svg" alt="Logo" width={150} height={50} />
-        </div>
+        <>
+            <div className='dark:hidden'>
+                <Image src='/logo-light.svg' alt='100xcoding Logo' width={200} height={100} />
+            </div>
+            <div className='hidden dark:block'>
+                <Image src='/logo-dark.svg' alt='100xcoding Logo' width={200} height={100} />
+            </div>
+        </>
     )
 }
