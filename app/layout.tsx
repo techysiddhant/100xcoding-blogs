@@ -18,6 +18,9 @@ export const metadata = createMetadata({
 export default function Layout({ children }: { children: ReactNode }) {
   return (
     <html lang="en" className={`${inter.className} `} suppressHydrationWarning>
+      <head>
+        <link rel="icon" href="/favicon/favicon.ico" sizes="any" />
+      </head>
       <body className="flex flex-col min-h-screen">
         <RootProvider theme={{
           enableSystem: true,
