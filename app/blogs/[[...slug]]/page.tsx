@@ -14,7 +14,7 @@ import { TypeTable } from "fumadocs-ui/components/type-table";
 import { File, Folder, Files } from "fumadocs-ui/components/files";
 import { Accordion, Accordions } from "fumadocs-ui/components/accordion";
 import { createTypeTable } from "fumadocs-typescript/ui";
-import { cn } from '@/lib/utils';
+import { absoluteUrl, cn } from '@/lib/utils';
 const { AutoTypeTable } = createTypeTable();
 export default async function Page(props: {
   params: Promise<{ slug?: string[] }>;
@@ -78,15 +78,42 @@ export async function generateStaticParams() {
   return source.generateParams();
 }
 
-export async function generateMetadata(props: {
-  params: Promise<{ slug?: string[] }>;
-}) {
-  const params = await props.params;
-  const page = source.getPage(params.slug);
-  if (!page) notFound();
+export async function generateMetadata({
+  params,
+}: { params: Promise<{ slug?: string[] }> }) {
+  const { slug } = await params;
+  const page = source.getPage(slug);
+  if (page == null) notFound();
+  const baseUrl = process.env.NEXT_PUBLIC_URL || process.env.VERCEL_URL;
+  const url = new URL(`${baseUrl}/api/og`);
+  const { title, description } = page.data;
+  const pageSlug = page.file.path;
+  url.searchParams.set("type", "Blog");
+  url.searchParams.set("mode", "dark");
+  url.searchParams.set("heading", `${title}`);
 
   return {
-    title: page.data.title,
-    description: page.data.description,
+    title,
+    description,
+    openGraph: {
+      title,
+      description,
+      type: "website",
+      url: absoluteUrl(`blogs/${pageSlug}`),
+      images: [
+        {
+          url: url.toString(),
+          width: 1200,
+          height: 630,
+          alt: title,
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+      images: [url.toString()],
+    },
   };
 }
