@@ -13,7 +13,7 @@ export const Navbar = () => {
                     <div className='relative'>
                         <ul data-orientation="horizontal" className='flex flex-row items-center gap-2 '>
                             <li>
-                                <Link href="/blog/introduction" className='inline-flex items-center gap-1 p-2 text-fd-foreground transition-colors hover:text-fd-accent-foreground data-[active=true]:text-fd-primary [&_svg]:size-4 text-sm'>
+                                <Link href="/blogs/introduction" className='inline-flex items-center gap-1 p-2 text-fd-foreground transition-colors hover:text-fd-accent-foreground data-[active=true]:text-fd-primary [&_svg]:size-4 text-sm'>
                                     Getting Started
                                 </Link>
                             </li>

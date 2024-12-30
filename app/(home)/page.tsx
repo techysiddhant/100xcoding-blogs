@@ -43,7 +43,7 @@ export default function HomePage() {
                   size="lg"
                   className="text-lg px-8 bg-[#24AE73] hover:bg-[#1e9862]"
                 >
-                  <Link href="/blog/introduction">Explore Articles</Link>
+                  <Link href="/blogs/introduction">Explore Articles</Link>
                 </Button>
                 {/* <Button
                   size="lg"
