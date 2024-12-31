@@ -31,7 +31,7 @@ export default async function Page(props: {
   // });
   return (
     <DocsPage toc={page.data.toc} full={page.data.full} editOnGithub={{
-      owner: "100xcoding Blogs",
+      owner: "techysiddhant",
       repo: "100xcoding-blogs",
       sha: "main",
       path: `content/blogs/${page.file.path}`
