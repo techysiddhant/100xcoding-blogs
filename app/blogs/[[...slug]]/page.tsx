@@ -94,10 +94,10 @@ export async function generateMetadata({
 
   return {
     title,
-    description,
+    description: description,
     openGraph: {
       title,
-      description,
+      description: description,
       type: "website",
       url: absoluteUrl(`blogs/${pageSlug}`),
       images: [
@@ -112,7 +112,7 @@ export async function generateMetadata({
     twitter: {
       card: "summary_large_image",
       title,
-      description,
+      description: description,
       images: [url.toString()],
     },
   };
