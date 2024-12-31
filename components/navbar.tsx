@@ -2,7 +2,7 @@
 import { Logo } from '@/components/branding/logo'
 import { MobileThemeToggle, ThemeToggle } from '@/components/theme-toggler'
 import { useSearchContext } from 'fumadocs-ui/provider'
-import { Search } from 'lucide-react'
+import { Github, Search } from 'lucide-react'
 import Link from 'next/link'
 
 export const Navbar = () => {
@@ -30,6 +30,9 @@ export const Navbar = () => {
                             </li>
                         </ul>
                     </div>
+                    <Link className='hidden md:block' href="https://github.com/techysiddhant/100xcoding-blogs">
+                        <Github className='text-fd-muted-foreground' />
+                    </Link>
                     <div className="flex flex-1 flex-row items-center justify-end lg:gap-1.5">
                         <ThemeToggle />
                         <MobileThemeToggle />
