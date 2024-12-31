@@ -86,7 +86,7 @@ export async function generateMetadata({
   if (page == null) notFound();
   const baseUrl = process.env.NEXT_PUBLIC_URL || process.env.VERCEL_URL;
   const url = new URL(`${baseUrl}/api/og`);
-  const { title, description } = page.data;
+  const { title } = page.data;
   const pageSlug = page.file.path;
   url.searchParams.set("type", "Blog");
   url.searchParams.set("mode", "dark");
@@ -94,10 +94,10 @@ export async function generateMetadata({
 
   return {
     title,
-    description: description,
+    description: page.data.description,
     openGraph: {
       title,
-      description: description,
+      description: page.data.description,
       type: "website",
       url: absoluteUrl(`blogs/${pageSlug}`),
       images: [
@@ -112,7 +112,7 @@ export async function generateMetadata({
     twitter: {
       card: "summary_large_image",
       title,
-      description: description,
+      description: page.data.description,
       images: [url.toString()],
     },
   };
