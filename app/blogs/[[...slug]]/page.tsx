@@ -24,11 +24,6 @@ export default async function Page(props: {
   if (!page) notFound();
 
   const MDX = page.data.body;
-  // const time = await getGithubLastEdit({
-  //   owner: '100xcoding-blogs',
-  //   repo: '100xcoding-blogs',
-  //   path: `content/blogs/${page.file.path}`,
-  // });
   return (
     <DocsPage toc={page.data.toc} full={page.data.full} editOnGithub={{
       owner: "techysiddhant",
