@@ -3,7 +3,7 @@ import './global.css';
 import { RootProvider } from 'fumadocs-ui/provider';
 import { Inter } from 'next/font/google';
 import type { ReactNode } from 'react';
-
+import Loglib from "@loglib/tracker/react";
 const inter = Inter({
   subsets: ['latin'],
 });
@@ -27,6 +27,12 @@ export default function Layout({ children }: { children: ReactNode }) {
           defaultTheme: "dark",
         }}>
           {children}
+          <Loglib
+            config={{
+              id: "blogs.100xcoding.com",
+              consent: "granted",
+            }}
+          />
         </RootProvider>
       </body>
     </html>
