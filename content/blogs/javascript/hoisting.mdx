@@ -1,0 +1,131 @@
+---
+title: Hoisting in JavaScript 
+description: Learn JavaScript hoisting with clear examples and tips to write better code. Understand how declarations are moved to the top during compilation.
+---
+
+# Understanding JavaScript Hoisting
+
+JavaScript hoisting is a unique behavior in the language where variable and function declarations are moved to the top of their scope during the compilation phase, before the code executes. This can lead to some unexpected outcomes if you're not aware of how hoisting works.
+
+In this article, we'll explore:
+
+1. What hoisting is.
+2. How variable hoisting works.
+3. How function hoisting works.
+4. Examples of hoisting in action.
+
+---
+
+## What is Hoisting?
+
+Hoisting is JavaScript's default behavior of moving declarations to the top of the current scope. This means you can use variables and functions before declaring them in your code.
+
+---
+
+## Variable Hoisting
+
+### Using `var`
+Variables declared with `var` are hoisted to the top of their function or global scope, but their initialization remains in place. This results in `undefined` if you try to access them before their initialization.
+
+```javascript
+console.log(x); // Output: undefined
+var x = 5;
+console.log(x); // Output: 5
+```
+
+### Using `let` and `const`
+Variables declared with `let` and `const` are also hoisted, but they are not initialized. Accessing them before declaration results in a `ReferenceError`.
+
+```javascript
+console.log(y); // ReferenceError: Cannot access 'y' before initialization
+let y = 10;
+
+console.log(z); // ReferenceError: Cannot access 'z' before initialization
+const z = 15;
+```
+
+### Hoisting with Default Parameters
+When using default parameters, hoisting still applies, but the parameter's value can reference previously hoisted variables.
+
+```javascript
+function greet(name = defaultName) {
+  console.log(`Hello, ${name}`);
+}
+
+var defaultName = "Guest";
+greet(); // Output: Hello, Guest
+```
+
+---
+
+## Function Hoisting
+
+Functions declared using the `function` keyword are fully hoisted. This means you can call them before their declaration.
+
+```javascript
+hello(); // Output: Hello, World!
+
+function hello() {
+  console.log("Hello, World!");
+}
+```
+
+### Function Expressions
+Function expressions, whether assigned to `var`, `let`, or `const`, are not hoisted in the same way. Only the variable declaration is hoisted, not the function itself.
+
+```javascript
+sayHi(); // TypeError: sayHi is not a function
+
+var sayHi = function () {
+  console.log("Hi!");
+};
+```
+
+### Hoisting with Nested Functions
+Inner functions are also hoisted to the top of their containing function.
+
+```javascript
+outer();
+
+function outer() {
+  inner(); // Output: Inner function called!
+
+  function inner() {
+    console.log("Inner function called!");
+  }
+}
+```
+
+---
+
+## Hoisting in Practice
+
+Understanding hoisting can help you avoid bugs and write cleaner code. Here are some best practices:
+
+1. Always declare variables and functions at the top of their scope.
+2. Use `let` and `const` instead of `var` for better scoping and to avoid unintended behavior.
+3. Understand the difference between function declarations and expressions.
+
+---
+
+## Summary
+
+Hoisting is a fundamental concept in JavaScript that can lead to unexpected results if misunderstood. By understanding how variable and function declarations are treated during the compilation phase, you can write more predictable and bug-free code.
+
+Got any questions or insights about hoisting? Share them in the comments below!
+
+---
+
+## Related Resources
+
+- [MDN Web Docs on Hoisting](https://developer.mozilla.org/en-US/docs/Glossary/Hoisting)
+- [JavaScript Guide on Variables](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Grammar_and_Types#declarations)
+
+
+---
+
+## Watch This Video
+
+If you'd like a visual explanation of JavaScript hoisting, check out this video:
+
+<iframe width="640" height="400" src="https://www.youtube.com/embed/Fnlnw8uY6jo?si=t641N0S5jbnFigwX" title="JavaScript Hoisting Explained" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
